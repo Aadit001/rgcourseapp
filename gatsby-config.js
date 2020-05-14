@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path:`.env.process${process.env.NODE.ENV}`,
+  path:`.env.${process.env.NODE.ENV}`,
 })
 
 module.exports = {
