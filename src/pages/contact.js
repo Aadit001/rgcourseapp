@@ -6,58 +6,36 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import HeroSection from "../components/reuseable/HeroSection"
 import Infoblock from "../components/reuseable/Infoblock"
-import Dualinfoblock from "../components/reuseable/Dualinfoblock"
-import Coursecart from "../components/Cart/Coursecart"
+import Contact from "../components/Contact/contact"
 
 
-
-
-
-const IndexPage = ({data}) => (
+const ContactPage = ({data}) => (
   <Layout>
     <SEO title="SENSE IN TALKS" />
    <HeroSection
    img={data.img.childImageSharp.fluid}
-    title="i write code"
-   subtitle="learncodeonline.in"
-   heroclass="hero-background"
+    title="Contact Us"
+   subtitle=""
+   heroclass="about-background"
    />
-   <Infoblock heading="About Us"/>
-   <Coursecart courses={data.courses}/>
+  <Infoblock heading="How can we help?"/>
+  <Contact/>
   
-   <Dualinfoblock heading=" Our Team"/>
+  
  </Layout>
 )
 
 export const query = graphql`
 {
-  img: file(relativePath: { eq: "heromain.png" }) {
+  img: file(relativePath: { eq: "contact.png" }) {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 250) {
           ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
-    courses: allContentfulCourses{
-      edges {
-        node {
-          id
-          price
-          title
-          categories
-          description{
-            description
-          }
-          image{
-            fixed(width:200 ,height:120){
-              ...GatsbyContentfulFixed_tracedSVG
-            }
-          }
-          }
-        }
-      }
 }
 
 `
 
-export default IndexPage
+export default ContactPage
