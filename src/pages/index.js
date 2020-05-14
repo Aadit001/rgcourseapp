@@ -20,8 +20,7 @@ const IndexPage = ({data}) => (
    />
    <Infoblock heading="About Us"/>
    <Coursecart courses={data.courses}/>
-  
-   <Dualinfoblock heading=" Our Team"/>
+    <Dualinfoblock heading=" Our Team"/>
  </Layout>
 )
 
@@ -52,8 +51,8 @@ export const query = graphql`
           }
         }
       }
-}
 
+    }
 `
 
 export default IndexPage
