@@ -42,8 +42,8 @@ module.exports = {
     {
 			resolve: 'gatsby-plugin-snipcart',
 			options: {
-        apiKey: 'process.env.SNIPCART_KEY',
-        autopop:true,
+        apiKey: process.env.SNIPCART_KEY,
+        autopop:true
 			}
 		}
     // this (optional) plugin enables Progressive Web App + Offline functionality
