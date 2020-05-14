@@ -9,10 +9,6 @@ import Infoblock from "../components/reuseable/Infoblock"
 import Dualinfoblock from "../components/reuseable/Dualinfoblock"
 import Coursecart from "../components/Cart/Coursecart"
 
-
-
-
-
 const IndexPage = ({data}) => (
   <Layout>
     <SEO title="SENSE IN TALKS" />
