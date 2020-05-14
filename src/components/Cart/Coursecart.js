@@ -2,21 +2,75 @@ import React, { Component } from 'react'
 import Heading from "../reuseable/Heading"
 import Img from 'gatsby-image'
 
+
+
+
+const getCaty = items =>{
+    let holdItems = items.map(items =>{
+        return items.node.categories
+    })
+    let holdCategories = new Set(holdItems)
+    let sortedCategories = Array.from(holdCategories)
+    sortedCategories =["all", ...sortedCategories]
+    return sortedCategories
+}
+
 export default class Coursecart extends Component {
     constructor(props){
         super(props)
         this.state={
             courses: props.courses.edges,
             mycourses: props.courses.edges,
+            mycategories: getCaty(props.courses.edges)
 
         }
     }
+
+ catyClicked = categories =>{
+let keepItsafe = [...this.state.courses]
+    
+  if (categories === "all") {
+     this.setState(()=>{
+         return {mycourses:keepItsafe}
+     }) 
+  }else{
+      let holdnew = keepItsafe.filter(({node})=> node.categories === categories)
+      this.setState(()=>{
+        return {mycourses:holdnew} 
+      })
+  }
+ 
+ }
+
+
+
     render() {
      //   console.log(this.state.courses);
         return (
             <section className="py-5">
             <div className="container">
             <Heading title="Courses"/>
+            <div className= "row my-3">
+            <div className="col-10 mx-auto text-center">
+            {
+              this.state.mycategories.map((categories,index)=>{
+                 return (
+                <button 
+                className="btn btn-info m-3 px-3" 
+                type="button" 
+                key={index}
+                onClick={()=>{
+                    this.catyClicked(categories)
+                }}>
+                {categories}
+                </button>
+
+                 )
+              })
+
+            }
+             </div>
+            </div>
             <div className="row">
             { this.state.mycourses.map(({node})=>{
                 return(
